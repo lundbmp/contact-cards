@@ -36,6 +36,7 @@ window.editCard = (e) => {
 
   // Toggles the Submit button so that it now Updates an existing contact instead of posting a new one
   submitBtnToUpdate = true;
+  editDb(id, editName, editEmail, editPhone);
 };
 
 window.deleteCard = (e) => {
@@ -46,3 +47,9 @@ window.deleteCard = (e) => {
   // Reload the DOM
   fetchCards();
 };
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js");
+  });
+}
